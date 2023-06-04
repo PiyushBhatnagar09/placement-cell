@@ -1,0 +1,23 @@
+<div id="outer-container">
+    <div id="login-box">
+        <h2>Sign Up here</h2>
+        <form action="/users/create" method="POST">
+            <p>Name :</p>
+            <input type="text" name="name" id="name" required>
+            <hr>
+            <p>Email :</p>
+            <input type="email" name="email" id="email" required>
+            <hr>
+            <p>Password :</p>
+            <input type="password" name="password" id="password" required>
+            <hr>
+            <p>Confirm Password :</p>
+            <input type="password" name="confirm_password" id="confirm_password" required>
+            <hr>
+            <button type="submit"><b>SignUp</b></button>
+        </form>
+        <p id="google-login">
+            <a href="/users/auth/google">Google Sign In/Sign Up</a>
+        </p>
+    </div>
+</div>

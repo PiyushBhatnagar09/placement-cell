@@ -1,0 +1,43 @@
+body {
+    background: url(background.jpeg) no-repeat fixed right top;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
+#outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#login-box {
+    padding: 10px 5px;
+    margin-top: 5%;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(31, 30, 30, 0.8);
+    box-shadow: 5px;
+}
+
+#password, #email, #name, #confirm_password, button {
+    height: 35px;
+    opacity: initial;
+}
+#password, #email, #name, #confirm_password {
+    width: 260px;
+}
+button {
+    background-color: rgb(221, 6, 6);
+    color: white;
+    border: 0px;
+    width: 80px;
+}
+button:hover {
+    background-color: grey;
+}
+#login-box h2{
+    color: red;
+    text-decoration: underline;
+}

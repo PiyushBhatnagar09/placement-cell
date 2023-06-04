@@ -1,0 +1,16 @@
+<h1>
+    HOME PAGE
+</h1>
+<h2>
+    STUDENT'S INFO
+</h2>
+<% if(locals.user) { %>
+    for(s of students) {
+        <li>
+            <p>s.name</p>
+            <p>s.email</p>
+        </li>
+    }
+<% }else{ %>
+    <p>OOPS! Looks like u are not signed in</p>
+<% } %>

@@ -26,16 +26,14 @@ passport.use(new googleStrategy({
                         name: profile.displayName,
                         email: profile.emails[0].value,
                         password: crypto.randomBytes(20).toString('hex')
-                    },
-                    function(err, user) {
-                        if(err) {
-                            console.log('Error in creating user google strategy passport', err);
-                            return;
-                        }
-                        
+                    })
+                    .then((user)=> {
                         return done(null, user);
-                    }
-                    )
+                    })
+                    .catch((err)=> {
+                        console.log('Error in creating user google strategy passport', err);
+                        return;
+                    })
                 }
             })
             .catch((err)=> {

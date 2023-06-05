@@ -12,7 +12,7 @@
         <ul>
         <% for(c of student.courses) { %>
             <li>
-                <h3>Name: <%= c.name %></h3>
+                <h3>Subject: <%= c.name %></h3>
                 <h3>Score: <%= c.score %></h3>
             </li>
         <% } %>
@@ -26,9 +26,5 @@
             </li>
         <% } %>
         </ul>
-        <hr>
-        <form action="/students/csv/<%= student._id %>" method="POST">
-            <input type="submit" value="Download CSV">
-        </form>
     </div>
 </div>

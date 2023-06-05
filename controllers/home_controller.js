@@ -33,6 +33,7 @@ module.exports.home= async function(req, res) {
         }
     });
 
+    console.log(students);
     return res.render('user/home', {
         layout: 'user/layout',
         btn_text: 'Sign Out',

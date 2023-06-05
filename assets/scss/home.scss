@@ -1,10 +1,15 @@
 body,html {
     height: 100%;
-    border: 1px solid orange;
 }
 input {
-    width: 80%;
+    width: 50%;
     overflow: auto;
+}
+.text-underline {
+    text-decoration: underline;
+}
+#oops {
+    font-size: 100px;
 }
 #outer-container {
     margin: 0px;
@@ -14,30 +19,51 @@ input {
 
     #student-container {
         display: inline-block;
-        padding: 15px;
-        border: 1px solid red;
+        padding-top: 0px;
         width: 45%;
         height: 100%;
-
+        text-align: center;
+        border-right: 1px solid black;
+        h2 {
+            margin: 0px;
+            padding: 4px;
+            width: 100%;
+            background-color: rgba(0, 102, 255, 0.548);
+        }
         .card {
             width: 80% !important;
             overflow: auto;
+            margin: auto;
+            text-align: center;
 
             .profile-link {
                 width: 80% !important;
                 overflow: auto;
+            }
+            .card-title {
+                font-weight: 700;
+                font-size: 30px;
+                padding: 4px;
             }
         }
     }
 
     #interview-container {
         display: inline-block;
-        padding: 10px;
-        width: 35%;
+        padding-top: 0px;
+        width: 45%;
         height: 100%;
-        overflow: auto;
+        text-align: center;
+        border-right: 1px solid black;
 
+        h2 {
+            margin: 0px;
+            padding: 4px;
+            width: 100%;
+            background-color: rgba(0, 102, 255, 0.548);
+        }
         .name-link {
+            text-align: center;
             background-color: rgba(250, 229, 201, 0.836);
             text-decoration: underline;
             width: 80%;
@@ -46,6 +72,21 @@ input {
         .card {
             width: 80% !important;
             overflow: auto;
+            margin: auto;
+            text-align: center;
+
+            input {
+                border: 0px;
+                border-radius: 5px;
+                width: 75%;
+            }
+            .card-title {
+                text-align: center;
+                font-weight: 700;
+                font-size: 30px;
+                background-color: rgb(248, 248, 241);
+                padding: 4px;
+            }
         }
     }
 
@@ -53,7 +94,7 @@ input {
         padding: 10px;
         width: 20%;
         text-align: center;
-        background-color: rgba(240, 248, 255, 0.541);
+        background-color: rgba(240, 248, 255, 0.726);
         height: 100%;
         overflow: auto;
 
@@ -62,4 +103,16 @@ input {
             overflow: auto;
         }
     }
+    .delete-button {
+        width: 40px;
+        height: 40px;
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+#csv-box {
+    border: 1px solid red;
+    text-align: center;
 }

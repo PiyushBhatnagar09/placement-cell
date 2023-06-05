@@ -1,5 +1,8 @@
 const Student= require('../models/student');
 const Course= require('../models/course');
+const fs= require('fs');
+const ObjectsToCsv = require('objects-to-csv');
+const Interview = require('../models/interview');
 
 module.exports.addStudentPage= function(req, res) {
     return res.render('student/newStudentForm', {
@@ -22,9 +25,11 @@ module.exports.addStudent= async function(req, res) {
             name: 'REACT',
             score: req.body.dsa_score
         });
-
+        console.log('i am don');
+        var name= (req.body.name).toUpperCase();
+        console.log(name);
         let student= await Student.create({
-            name: req.body.name,
+            name: name,
             email: req.body.email,
             batch: req.body.batch,
             college: req.body.college,
@@ -81,16 +86,10 @@ module.exports.profile= async function(req, res) {
     }
 }
 
-const objectstocsv= require('objects-to-csv');
-const fs= require('fs');
-const ObjectsToCsv = require('objects-to-csv');
-
 module.exports.downloadCSV= async function(req, res) {
     try {
-        console.log('fndd', req.params.id);
-        var student= await Student.findOne({
-            _id: req.params.id
-        })
+        console.log('here');
+        var students= await Student.find()
         .populate({
             path: 'courses',
             populate: {
@@ -106,34 +105,71 @@ module.exports.downloadCSV= async function(req, res) {
                 }
             }
         })
-        console.log(student._id, student.courses, student.interviews);
-        const data= [
-            {
-                name: student.name,
-                email: student.email,
-                batch: student.batch,
-                college: student.college,
-                status: student.status,
-                courses: student.courses,
-                interviews: student.interviews
+        console.log(students);
+
+        const data= [];
+        for(s of students) {
+            var c= s.courses;
+            var dsa, webd, react;
+            for(ci of c) {
+                console.log(ci);
+                if(ci.name=='DSA') {
+                    dsa= ci.score;
+                }
+                if(ci.name=='WEBD') {
+                    webd= ci.score;
+                }
+                if(ci.name=='REACT') {
+                    react= ci.score;
+                }
             }
-        ]
+
+            for(i of s.interviews) {
+                var st= {
+                    name: s.name,
+                    email: s.email,
+                    batch: s.batch,
+                    college: s.college,
+                    status: s.status,
+                    DSA_score: dsa,
+                    WEBD_score: webd,
+                    REACT_score: react,
+                    company: i.company.name,
+                    date: i.date
+                };
+                data.push(st);
+            }
+        }
 
         const csv= new ObjectsToCsv(data);
-        await csv.toDisk(`./${student.name}.csv`);
+        await csv.toDisk(`DetailsInCSVformat.csv`);
 
-        console.log('PRINTING: ');
         console.log(await csv.toString());
-        return res.download(`./${student.name}.csv`, ()=> {
-            fs.unlinkSync(`./${student.name}.csv`)
+        return res.download(`DetailsInCSVformat.csv`, ()=> {
+            fs.unlinkSync(`DetailsInCSVformat.csv`)
         })
-        // return res.render('student/profile', {
-        //     layout: 'student/layout',
-        //     btn_text: 'Sign Out',
-        //     form_action: '/users/sign-out',
-        //     student: student
-        // });
     }catch(err) {
         console.log(err);
+        return res.redirect('/');
+    }
+}
+
+module.exports.deleteStudent= async function(req, res) {
+    try {
+        console.log(req.params.id);
+        var student= await Student.findById(req.params.id);
+        await Student.findByIdAndDelete(req.params.id);
+
+        var Is= await Interview.find({
+            student: student
+        })
+        for(is of Is) {
+            await Interview.findByIdAndDelete(is._id);
+        }
+        req.flash('success', 'Student deleted successfully');
+        return res.redirect('/');
+    }catch(err) {
+        console.log(err);
+        return res.redirect('/');
     }
 }

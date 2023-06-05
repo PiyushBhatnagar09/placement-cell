@@ -35,3 +35,7 @@ then just replace node_modules folders with the codeial's
 
 npm install passport-google-oauth
 npm install objects-to-csv
+
+To use fetch in fetching api data:-
+npm install node-fetch@2, Then do:-
+const fetch= require('node-fetch')

@@ -44,3 +44,25 @@ module.exports.addInterview= async function(req, res) {
         return res.redirect('/');
     }
 }
+
+module.exports.deleteInterview= async function(req, res) {
+    try {
+        var interview= await Interview.findById(req.params.id);
+        await Interview.findByIdAndDelete(req.params.id);
+        await Student.findByIdAndUpdate(interview.student, { $pull: {interviews: req.params.id}});
+        req.flash('success', 'Interview deleted successfully');
+        return res.redirect('/');
+    }catch(err) {
+        req.flash('Error: ', err);
+        return res.redirect('/');
+    }
+}
+
+const fetch= require('node-fetch');
+module.exports.externalJobs= async function(req, res) {
+    return res.render('interview/external_jobs', {
+        layout: 'interview/layout',
+        btn_text: 'Sign Out',
+        form_action: '/users/sign-out',
+    })
+}

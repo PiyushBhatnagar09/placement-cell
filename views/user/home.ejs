@@ -2,7 +2,7 @@
 
 <title>HOME PAGE</title>
 <% if(!locals.user) { %>
-    <p>OOPS! Looks like u are not signed in</p>
+    <p id="oops">OOPS! Looks like you are not signed in..</p>
     <img src="" alt="">
 <% }else{ %>
     <div id="outer-container">
@@ -11,21 +11,29 @@
             <% for(s of students) { %>
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                      <h5 class="card-title"><%= s.name %></h5>
-                      SCHEDULED INTERVIEWS:-
+                      <h5 class="card-title">
+                        <%= s.name %>
+                        <a href="/students/delete/<%= s._id %>" class="delete-button">
+                            <img src="https://icon-library.com/images/delete-button-icon/delete-button-icon-3.jpg" alt="DELETE">
+                        </a>
+                      </h5>
+                      <p class="text-underline">SCHEDULED INTERVIEWS:-</p>
                       <p class="card-text">
+                        <ul>
                         <% for(se of s.interviews) { %>
                             <li>
                                 <p>COMPANY: <%= se.company.name %></p>
                                 <p>DATE: <%= se.date %></p>
                             </li>
                         <% } %>
+                        </ul>
                       </p>
                       <form action="/students/<%= s._id %>" method="POST">
                         <input class="profile-link btn btn-primary" type="submit" value="VIEW FULL PROFILE">
                       </form>
                     </div>
                 </div>
+                <br>
             <% } %>
             <hr>
             <form action="/students/add-student-page" method="GET">
@@ -34,31 +42,54 @@
         </div>
         <div id="interview-container">
             <h2>LIST OF INTERVIEWS</h2>
+            <ul>
             <% for(i of interviews) { %>
-                <div class="card" style="width: 18rem;">
+                <div class="card bg-white" style="width: 18rem;">
                     <div class="card-body">
-                      <h5 class="card-title"><%= i.company.name %></h5>
+                      <h5 class="card-title">
+                        <%= i.company.name %>
+                        <a href="/interviews/delete/<%= i._id %>" class="delete-button">
+                            <img src="https://icon-library.com/images/delete-button-icon/delete-button-icon-3.jpg" alt="DELETE">
+                        </a>
+                    </h5>
                       <p class="card-text">
-                            <li>
-                                <form action="/students/<%= i.student._id %>" method="POST">
-                                    <input class="name-link" type="submit" value="<%= i.student.name %>">
-                                </form>
-                                <p>DATE: <%= i.date %></p>
-                            </li>
+                            <form action="/students/<%= i.student._id %>" method="POST">
+                                <input class="name-link" type="submit" value="<%= i.student.name %>">
+                            </form>
+                            <p>DATE: <%= i.date %></p>
                       </p>
                     </div>
                 </div>
             <% } %>
+            </ul>
             <hr>
             <form action="/interviews/add-interview-page" method="GET">
                 <input type="submit" value="ADD INTERVIEW">
             </form>
         </div>
         <div id="extra-links">
-            <form action="/companies/add-company" method="POST">
-                <input type="text" name="company" id="company" placeholder="Enter company name..." required>
-                <input class="btn btn-secondary" type="submit" value="ADD COMPANY">
-            </form>
+            <div>
+                <form action="/interviews/external-jobs">
+                    <h4>CLICK TO SEE OTHER AVAILABLE JOBS :</h4>
+                    <input class="btn btn-secondary" type="submit" value="EXTERNAL JOBS">
+                </form>
+            </div>
+            <hr>
+            <div>
+                <h4>ADD MORE COMPANIES :</h4>
+                <form action="/companies/add-company" method="POST">
+                    <input type="text" name="company" id="company" placeholder="Enter company name..." required>
+                    <br>
+                    <br>
+                    <input class="btn btn-secondary" type="submit" value="ADD COMPANY">
+                </form>
+            </div>
         </div>
+    </div>
+    <div id="csv-box">
+        <hr>
+        <form action="/students/csv" method="GET">
+            <input type="submit" value="Download CSV">
+        </form>
     </div>
 <% } %>

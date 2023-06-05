@@ -1,0 +1,18 @@
+/* profile page of student */
+#outer-container {
+  color: black; }
+  #outer-container #profile-container {
+    display: block;
+    padding: 10px;
+    background-color: rgba(247, 243, 239, 0.603); }
+    #outer-container #profile-container h1 {
+      background-color: rgba(73, 65, 62, 0.856);
+      font-size: 4rem;
+      font-weight: 700;
+      text-decoration: underline;
+      padding: 4px; }
+    #outer-container #profile-container h1, #outer-container #profile-container h2 {
+      display: block; }
+    #outer-container #profile-container h2 span {
+      padding: 2px;
+      background-color: rgba(255, 166, 0, 0.664); }

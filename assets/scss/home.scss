@@ -1,0 +1,65 @@
+body,html {
+    height: 100%;
+    border: 1px solid orange;
+}
+input {
+    width: 80%;
+    overflow: auto;
+}
+#outer-container {
+    margin: 0px;
+    padding: 0px;
+    color: black;
+    height: 100%;
+
+    #student-container {
+        display: inline-block;
+        padding: 15px;
+        border: 1px solid red;
+        width: 45%;
+        height: 100%;
+
+        .card {
+            width: 80% !important;
+            overflow: auto;
+
+            .profile-link {
+                width: 80% !important;
+                overflow: auto;
+            }
+        }
+    }
+
+    #interview-container {
+        display: inline-block;
+        padding: 10px;
+        width: 35%;
+        height: 100%;
+        overflow: auto;
+
+        .name-link {
+            background-color: rgba(250, 229, 201, 0.836);
+            text-decoration: underline;
+            width: 80%;
+            overflow: auto;
+        }
+        .card {
+            width: 80% !important;
+            overflow: auto;
+        }
+    }
+
+    #extra-links {
+        padding: 10px;
+        width: 20%;
+        text-align: center;
+        background-color: rgba(240, 248, 255, 0.541);
+        height: 100%;
+        overflow: auto;
+
+        input {
+            width: 80%;
+            overflow: auto;
+        }
+    }
+}

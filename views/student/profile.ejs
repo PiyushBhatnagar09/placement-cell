@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/profile.css">
+
+<div id="outer-container">
+    <div id="profile-container">
+        <h1><%= student.name %></h1>
+        <hr>
+        <h2><span>EMAIL:</span> <%= student.email %></h2>
+        <h2><span>BATCH:</span> <%= student.batch %></h2>
+        <h2><span>COLLEGE:</span> <%= student.college %></h2>
+        <h2><span>STATUS:</span> <%= student.status %></h2>
+        <h2><span>COURSES:</span></h2>
+        <ul>
+        <% for(c of student.courses) { %>
+            <li>
+                <h3>Name: <%= c.name %></h3>
+                <h3>Score: <%= c.score %></h3>
+            </li>
+        <% } %>
+        </ul>
+        <h2><span>INTERVIEWS:</span></h2>
+        <ul>
+        <% for(i of student.interviews) { %>
+            <li>
+                <h3>COMPANY: <%= i.company.name %></h3>
+                <h3>DATE: <%= i.date %></h3>
+            </li>
+        <% } %>
+        </ul>
+        <hr>
+        <form action="/students/csv/<%= student._id %>" method="POST">
+            <input type="submit" value="Download CSV">
+        </form>
+    </div>
+</div>

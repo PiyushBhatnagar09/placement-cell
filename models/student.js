@@ -6,10 +6,6 @@ const studentSchema= new mongoose.Schema({
         required: true,
         unique: true
     },
-    password: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         required: true
@@ -30,6 +26,12 @@ const studentSchema= new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Course'
+        }
+    ],
+    interviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Interview'
         }
     ]
 }, {

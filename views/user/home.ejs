@@ -1,16 +1,64 @@
-<h1>
-    HOME PAGE
-</h1>
-<h2>
-    STUDENT'S INFO
-</h2>
-<% if(locals.user) { %>
-    for(s of students) {
-        <li>
-            <p>s.name</p>
-            <p>s.email</p>
-        </li>
-    }
-<% }else{ %>
+<link rel="stylesheet" href="/css/home.css">
+
+<title>HOME PAGE</title>
+<% if(!locals.user) { %>
     <p>OOPS! Looks like u are not signed in</p>
+    <img src="" alt="">
+<% }else{ %>
+    <div id="outer-container">
+        <div id="student-container">
+            <h2>LIST OF STUDENTS</h2>
+            <% for(s of students) { %>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= s.name %></h5>
+                      SCHEDULED INTERVIEWS:-
+                      <p class="card-text">
+                        <% for(se of s.interviews) { %>
+                            <li>
+                                <p>COMPANY: <%= se.company.name %></p>
+                                <p>DATE: <%= se.date %></p>
+                            </li>
+                        <% } %>
+                      </p>
+                      <form action="/students/<%= s._id %>" method="POST">
+                        <input class="profile-link btn btn-primary" type="submit" value="VIEW FULL PROFILE">
+                      </form>
+                    </div>
+                </div>
+            <% } %>
+            <hr>
+            <form action="/students/add-student-page" method="GET">
+                <input type="submit" value="ADD STUDENT">
+            </form>
+        </div>
+        <div id="interview-container">
+            <h2>LIST OF INTERVIEWS</h2>
+            <% for(i of interviews) { %>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= i.company.name %></h5>
+                      <p class="card-text">
+                            <li>
+                                <form action="/students/<%= i.student._id %>" method="POST">
+                                    <input class="name-link" type="submit" value="<%= i.student.name %>">
+                                </form>
+                                <p>DATE: <%= i.date %></p>
+                            </li>
+                      </p>
+                    </div>
+                </div>
+            <% } %>
+            <hr>
+            <form action="/interviews/add-interview-page" method="GET">
+                <input type="submit" value="ADD INTERVIEW">
+            </form>
+        </div>
+        <div id="extra-links">
+            <form action="/companies/add-company" method="POST">
+                <input type="text" name="company" id="company" placeholder="Enter company name..." required>
+                <input class="btn btn-secondary" type="submit" value="ADD COMPANY">
+            </form>
+        </div>
+    </div>
 <% } %>

@@ -5,7 +5,9 @@ const passport= require('passport');
 const home_controller= require('../controllers/home_controller');
 
 router.use('/users', require('./users'));
-// router.get('/', home_controller.home);
+router.use('/students', require('./students'));
+router.use('/interviews', require('./interviews'));
+router.use('/companies', require('./companies'));
 
 router.get('/', home_controller.home);
 

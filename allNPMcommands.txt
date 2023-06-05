@@ -31,4 +31,7 @@ NOTE: when we are sending params in the form action then the method must be POST
 npm install passport-google-oath
 
 NOTE: when existing module cannot be installed in npm,
-then just replace node_modules folders with the codeial's node_modules
+then just replace node_modules folders with the codeial's 
+
+npm install passport-google-oauth
+npm install objects-to-csv

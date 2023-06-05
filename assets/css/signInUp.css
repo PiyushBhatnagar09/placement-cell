@@ -1,8 +1,11 @@
 body {
-    background: url(background.jpeg) no-repeat fixed right top;
+    background: url('https://cccamas.com/wp-content/uploads/2014/07/b-slide11-880x480.jpg') no-repeat fixed right top;
     background-size: cover;
     font-family: 'Times New Roman', Times, serif;
     color: white;
+}
+.text-center {
+    text-align: center;
 }
 #outer-container {
     display: flex;
@@ -32,7 +35,7 @@ button {
     background-color: rgb(221, 6, 6);
     color: white;
     border: 0px;
-    width: 80px;
+    padding: 3px;
 }
 button:hover {
     background-color: grey;

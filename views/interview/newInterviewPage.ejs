@@ -1,0 +1,24 @@
+<div id="outer-container">
+    <div id="login-box">
+        <h2 class="text-center">ADD INTERVIEW DETAILS</h2>
+        <form action="/interviews/add-interview" method="POST">
+            <p>Select Company Name :</p>
+            <select name="company_id" id="company_id" required>
+                <% for(c of companies) { %>
+                    <option value="<%= c._id %>"><%= c.name %></option>
+                <% } %>
+            </select>
+            <hr>
+            <p>Select Student Name :</p>
+            <select name="student_id" id="student_id" required>
+                <% for(s of students) { %>
+                    <option value="<%= s._id %>"><%= s.name %></option>
+                <% } %>
+            </select>
+            <p>Select Date of Interview :</p>
+            <input type="date" name="date" id="date" required>
+            <hr>
+            <button type="submit"><b>ADD INTERVIEW</b></button>
+        </form>
+    </div>
+</div>

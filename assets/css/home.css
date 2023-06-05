@@ -1,95 +1,49 @@
-body {
-    background-image: url(https://newevolutiondesigns.com/images/freebies/white-wallpaper-15.jpg);
-    object-fit: cover;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-}
-#container {
-    margin: auto;
-    display: flex;
-}
-#block1 {
-    height: 100%;
-    width: 50%;
-    display: flexbox;
-}
-#block2 {
-    height: 100%;
-    width: 50%;
-    display: flexbox;
-}
+body, html {
+  height: 100%;
+  border: 1px solid orange; }
 
-form {
-    padding-left: 20px;
-}
+input {
+  width: 80%;
+  overflow: auto; }
 
-.todo-heading {
-    text-align: center;
-    text-decoration: underline;
-    background-color: rgb(248, 225, 195);
-    padding: 5px;
-    color: brown;
-    font-weight: 900;
-    border: 2px solid brown;
-}
-
-li {
-    padding: 0px;
-    border: 3px solid rgb(248, 198, 34);
-}
-img {
-    width: 35px;
-    height: 35px;
-}
-.details {
+#outer-container {
+  margin: 0px;
+  padding: 0px;
+  color: black;
+  height: 100%; }
+  #outer-container #student-container {
+    display: inline-block;
+    padding: 15px;
+    border: 1px solid red;
+    width: 45%;
+    height: 100%; }
+    #outer-container #student-container .card {
+      width: 80% !important;
+      overflow: auto; }
+      #outer-container #student-container .card .profile-link {
+        width: 80% !important;
+        overflow: auto; }
+  #outer-container #interview-container {
     display: inline-block;
     padding: 10px;
-}
-.desc {
-    background-color: antiquewhite;
-    display: inline-block;
-    padding: 5px;
-    margin-right: 10px;
-}
-.category {
-    background-color: orange;
-    display: inline-block;
-    color: white;
-    padding: 5px;
-    margin-right: 10px;
-}
-.due-date {
-    background-color: rgb(17, 112, 119);
-    display: inline-block;
-    color: white;
-    padding: 5px;
-    margin-right: 10px;
-}
-.delete-button {
-    background-color: white;
-    display: inline-block;
-    color: white;
-    padding: 5px;
-}
-
-#desc {
-    width: 340px;
-    height: 50px;
-    font-size: 20px;
-}
-#category {
-    width: 100px;
-    height: 40px;
+    width: 35%;
+    height: 100%;
+    overflow: auto; }
+    #outer-container #interview-container .name-link {
+      background-color: rgba(250, 229, 201, 0.836);
+      text-decoration: underline;
+      width: 80%;
+      overflow: auto; }
+    #outer-container #interview-container .card {
+      width: 80% !important;
+      overflow: auto; }
+  #outer-container #extra-links {
+    padding: 10px;
+    width: 20%;
     text-align: center;
-}
-#date {
-    width: 130px;
-    height: 40px;
-    text-align: center;
-}
-
-#top-details {
-    text-align: center;
-    background-color: rgb(253, 156, 156);
-    font-weight: 600;
-    padding: 5px;
-}
+    background-color: rgba(240, 248, 255, 0.541);
+    height: 100%;
+    overflow: auto; }
+    #outer-container #extra-links input {
+      width: 80%;
+      overflow: auto; }

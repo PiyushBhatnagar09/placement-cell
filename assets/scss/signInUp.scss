@@ -1,8 +1,14 @@
 body {
     background: url('https://www.incimages.com/uploaded_files/image/1920x1080/getty_939184094_374587.jpg') no-repeat fixed right top;
     background-size: cover;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:cursive;
     color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+html {
+    height: 100%;
 }
 .text-center {
     text-align: center;
@@ -23,6 +29,12 @@ body {
     background: rgba(31, 30, 30, 0.8);
     box-shadow: 0px 5px 15px grey;
     border: 2px solid rgba(129, 219, 247, 0.788);
+    padding-bottom: 4px;
+    border-radius: 10px;
+
+    input, select {
+        padding: 4px;
+    }
 }
 
 #password, #email, #name, #confirm_password, button {
@@ -33,7 +45,7 @@ body {
     width: 260px;
 }
 button {
-    background-color: rgb(221, 6, 6);
+    background-color: rgb(238, 6, 6);
     color: white;
     border: 0px;
     padding: 5px 15px;
@@ -43,19 +55,22 @@ button:hover {
     background-color: grey;
 }
 #login-box h2{
+    padding: 4px 0px;
     font-weight: 700;
     color: white;
     text-align: center;
     width: 100%;
-    background-color: rgba(255, 0, 0, 0.774);
-    border-bottom: 4px solid red;
+    background-color: rgba(255, 0, 0, 0.829);
+    border-bottom: 4px solid rgba(255, 0, 0, 0.288);
+    border-radius: 9px;
 }
 
 #footer-contact {
     padding: 15px;
     color: white;
     text-align: center;
-    position: fixed;
+    left: 0px;
+    margin-top: auto;
     bottom: 0px;
     width: 100%;
     p {
@@ -75,10 +90,10 @@ button:hover {
         margin: 0px;
         padding: 0px;
         width: 100%;
-        height: 40px;
+        height: 50px;
         img {
             width: 100%;
-            height: 40px;
+            height: 50px;
         }
     }
 }

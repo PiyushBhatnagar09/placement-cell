@@ -1,5 +1,7 @@
+//using express
 const express= require('express');
 
+//using cookie parser to access cookies in browser
 const cookieParser= require('cookie-parser'); //to create and edit cookies
 const app= express();
 
@@ -16,8 +18,10 @@ const passportGoogle= require('./config/passport-google-oauth2-strategy'); //to 
 
 //using mongo store to store the session cookies in mongodb database to increase the time of cookie expiration
 const MongoStore= require('connect-mongo');
+
 //to convert scss files to css file
 const sassMiddleware= require('node-sass-middleware');
+
 //to display flash messages to user(NOTY is needed to be included at each .ejs page)
 const flash= require('connect-flash');
 const customMware= require('./config/middleware'); //middleware for flash messages
@@ -33,11 +37,13 @@ app.use(sassMiddleware({
 
 //this is compulsary to inlcude
 app.use(express.urlencoded());
+
 //telling express app to use cookie parser
 app.use(cookieParser());
 
 //telling the express app that for static files look into assets folder
 app.use(express.static('./assets'));
+
 //telling to use express layouts and extract the stylesheets and script files and place them as specified in layout.ejs
 app.use(expressLayouts);
 app.set('layout extractStyles', true);
@@ -55,9 +61,6 @@ app.use(session({
     secret: 'blahsomething',
     saveUninitialized: false,
     resave: false,
-    /*cookie: {
-        maxAge: (1000*60*100) //after this time, cookie expires (milliseconds)
-    },*/
     store: MongoStore.create(
         {
             mongoUrl: 'mongodb://localhost/codeial_development', //this URL i got by using console.log(mongoose.connection) and then search in the object returned for the url like this
@@ -69,6 +72,9 @@ app.use(session({
     )
     }));
 
+app.use('/uploads', express.static(__dirname+'/uploads'));
+
+//telling express app to use these libraries
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -80,6 +86,7 @@ app.use(customMware.setFlash);
 //use express router
 app.use('/', require('./routes')); //must place this line after passport lines
 
+//listening our current project on 8000 port
 app.listen(port, function(err) {
     if(err) {
         console.log(`Error in running the server : ${err}`);

@@ -1,23 +1,42 @@
+<!-- using custom stylesheet for home.ejs -->
 <link rel="stylesheet" href="/css/home.css">
 
+<!-- title of page -->
 <title>HOME PAGE</title>
+
+<!-- If user is signed in then show data otherwise, tell user to sign in -->
 <% if(!locals.user) { %>
-    <p id="oops">OOPS! Looks like you are not signed in..</p>
+
+    <p id="oops">OOPS! <p id="oops-text">Looks like you are not signed in..</p></p>
     <img src="" alt="">
+
 <% }else{ %>
+
+    <!-- outer container for all inner containers -->
     <div id="outer-container">
+
+        <!-- student container shows data related to student -->
         <div id="student-container">
-            <h2>LIST OF STUDENTS</h2>
+
+            <h2 class="head-style">LIST OF STUDENTS</h2>
+
+            <!-- displaying all students  -->
             <% for(s of students) { %>
+
+                <!-- using card by bootstrap to style the list in student container  -->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">
                         <%= s.name %>
+
+                        <!-- button to delete a student from database  -->
                         <a href="/students/delete/<%= s._id %>" class="delete-button">
                             <img src="https://icon-library.com/images/delete-button-icon/delete-button-icon-3.jpg" alt="DELETE">
                         </a>
                       </h5>
-                      <p class="text-underline">SCHEDULED INTERVIEWS:-</p>
+
+                      <!-- showing scheduled interviews of the particular student  -->
+                      <p class="text-underline">SCHEDULED INTERVIEWS:</p>
                       <p class="card-text">
                         <ul>
                         <% for(se of s.interviews) { %>
@@ -28,55 +47,89 @@
                         <% } %>
                         </ul>
                       </p>
-                      <form action="/students/<%= s._id %>" method="POST">
+
+                      <!-- button to view full profile of student  -->
+                      <form action="/students/<%= s._id %>" method="GET">
                         <input class="profile-link btn btn-primary" type="submit" value="VIEW FULL PROFILE">
                       </form>
+
                     </div>
                 </div>
                 <br>
             <% } %>
             <hr>
+
+            <!-- form which redirects employee to the add student page for adding student  -->
             <form action="/students/add-student-page" method="GET">
                 <input type="submit" value="ADD STUDENT">
             </form>
+            <br>
         </div>
+
+        <!-- Interview container which shows all information related to the company and student of a particular interview  -->
         <div id="interview-container">
-            <h2>LIST OF INTERVIEWS</h2>
+
+            <!-- displaying the list of all interviews  -->
+            <h2 class="head-style">LIST OF INTERVIEWS</h2>
+
             <ul>
             <% for(i of interviews) { %>
+                <!-- using card of bootstrap  -->
                 <div class="card bg-white" style="width: 18rem;">
                     <div class="card-body">
-                      <h5 class="card-title">
+                      <h5 class="card-title text-underline">
                         <%= i.company.name %>
+
+                        <!-- button to delete a interview from database  -->
                         <a href="/interviews/delete/<%= i._id %>" class="delete-button">
                             <img src="https://icon-library.com/images/delete-button-icon/delete-button-icon-3.jpg" alt="DELETE">
                         </a>
-                    </h5>
-                      <p class="card-text">
-                            <form action="/students/<%= i.student._id %>" method="POST">
-                                <input class="name-link" type="submit" value="<%= i.student.name %>">
-                            </form>
-                            <p>DATE: <%= i.date %></p>
+                      </h5>
+
+                      <!-- displaying the student name and the date of interview  -->
+                      <p class="card-text"> 
+                            <table>
+                                <tr>
+                                    <td>STUDENT: </td>
+                                    <td>
+                                        <form action="/students/<%= i.student._id %>" method="GET">
+                                            <input id="input-name-interview" class="name-link" type="submit" value="<%= i.student.name %>">
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>DATE:</td>
+                                    <td>
+                                        <input id="input-date-interview" class="name-link" value="<%= i.date %>" readonly>
+                                    </td>
+                                </tr>
+                            </table>
                       </p>
                     </div>
                 </div>
+                <br>
             <% } %>
             </ul>
             <hr>
+
+            <!-- form that redirects employee to add new interview  -->
             <form action="/interviews/add-interview-page" method="GET">
                 <input type="submit" value="ADD INTERVIEW">
             </form>
+            <br>
         </div>
+
+        <!-- this contains the extra links like external jobs link and add new company -->
         <div id="extra-links">
             <div>
                 <form action="/interviews/external-jobs">
-                    <h4>CLICK TO SEE OTHER AVAILABLE JOBS :</h4>
+                    <h4>CLICK TO SEE OTHER AVAILABLE JOBS</h4>
                     <input class="btn btn-secondary" type="submit" value="EXTERNAL JOBS">
                 </form>
             </div>
             <hr>
             <div>
-                <h4>ADD MORE COMPANIES :</h4>
+                <h4>ADD MORE COMPANIES</h4>
                 <form action="/companies/add-company" method="POST">
                     <input type="text" name="company" id="company" placeholder="Enter company name..." required>
                     <br>
@@ -84,10 +137,29 @@
                     <input class="btn btn-secondary" type="submit" value="ADD COMPANY">
                 </form>
             </div>
+            <hr>
+            <div>
+                <h4>COMPANIES:</h4>
+                <% for(c of companies) {%>
+                    <div class="card bg-white">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= c.name %>
+
+                                <!-- button to delete a company from database  -->
+                                <a href="/companies/delete/<%= c._id %>" class="delete-button">
+                                    <img src="https://icon-library.com/images/delete-button-icon/delete-button-icon-3.jpg" alt="DELETE">
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <br>
         </div>
     </div>
     <div id="csv-box">
-        <hr>
+        <p>Download data of all students in CSV format</p>
         <form action="/students/csv" method="GET">
             <input type="submit" value="Download CSV">
         </form>

@@ -3,6 +3,7 @@ const Course= require('../models/course');
 const fs= require('fs');
 const ObjectsToCsv = require('objects-to-csv');
 const Interview = require('../models/interview');
+const path= require('path');
 
 module.exports.addStudentPage= function(req, res) {
     return res.render('student/newStudentForm', {
@@ -163,13 +164,44 @@ module.exports.deleteStudent= async function(req, res) {
         var Is= await Interview.find({
             student: student
         })
-        for(is of Is) {
-            await Interview.findByIdAndDelete(is._id);
+        for(iis of Is) {
+            await Interview.findByIdAndDelete(iis._id);
         }
         req.flash('success', 'Student deleted successfully');
         return res.redirect('/');
     }catch(err) {
         console.log(err);
         return res.redirect('/');
+    }
+}
+
+module.exports.update= async function(req, res) {
+    try {
+        console.log('INside updattt');
+        let student= await Student.findById(req.params.id);
+        Student.uploadedAvatar(req, res, function(err) {
+            if(err) {
+                console.log('****Multer Error: ', err);
+            }
+
+            if(req.file) {
+                console.log(student.avatar);
+                if(student.avatar && fs.existsSync(path.join(__dirname, '..', student.avatar))) {
+                    console.log(true);
+                    fs.unlinkSync(path.join(__dirname, '..', student.avatar));
+                }
+
+                console.log('here');
+                //this is saving the path of the uploaded file into the avatar field in the user
+                student.avatar= Student.avatarPath+'/'+req.file.filename;
+            }
+            student.save();
+            console.log('oyy');
+            req.flash('success', 'Profile photo updated');
+            return res.redirect('back');
+        })
+    }catch(err) {
+        req.flash('error', err);
+        return res.redirect('back');
     }
 }

@@ -39,3 +39,5 @@ npm install objects-to-csv
 To use fetch in fetching api data:-
 npm install node-fetch@2, Then do:-
 const fetch= require('node-fetch')
+
+npm install multer

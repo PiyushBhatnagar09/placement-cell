@@ -1,5 +1,6 @@
 let Student= require('../models/student');
 let Interview= require('../models/interview');
+const Company = require('../models/company');
 
 module.exports.home= async function(req, res) {
     let students= await Student.find()
@@ -33,12 +34,15 @@ module.exports.home= async function(req, res) {
         }
     });
 
+    let companies= await Company.find();
+
     console.log(students);
     return res.render('user/home', {
         layout: 'user/layout',
         btn_text: 'Sign Out',
         form_action: '/users/sign-out',
         students: students,
-        interviews: interviews
+        interviews: interviews,
+        companies: companies
     });
 }

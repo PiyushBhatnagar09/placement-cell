@@ -2,29 +2,55 @@
 
 <div id="outer-container">
     <div id="profile-container">
-        <h1><%= student.name %></h1>
-        <hr>
-        <h2><span>EMAIL:</span> <%= student.email %></h2>
-        <h2><span>BATCH:</span> <%= student.batch %></h2>
-        <h2><span>COLLEGE:</span> <%= student.college %></h2>
-        <h2><span>STATUS:</span> <%= student.status %></h2>
-        <h2><span>COURSES:</span></h2>
-        <ul>
-        <% for(c of student.courses) { %>
-            <li>
-                <h3>Subject: <%= c.name %></h3>
-                <h3>Score: <%= c.score %></h3>
-            </li>
-        <% } %>
-        </ul>
-        <h2><span>INTERVIEWS:</span></h2>
-        <ul>
+        <div id="profile-image">
+            <img src="<%= student.avatar %>" alt="">
+            <br>
+            <form action="/students/update/<%= student._id %>" enctype="multipart/form-data" method="POST">                
+                <input type="file" name="avatar" placeholder="Profile Picture">
+                <input type="submit" value="Update">
+            </form>
+        </div>
+        <div id="student-data">
+            <h2 class="text-underline"><b><%= student.name %></b></h2>
+            <h4>&nbsp;&nbsp;&nbsp;-<%= student.email %></h4>
+            <table>
+                <tr>
+                    <td><h3><span class="circle-box-green">Batch:</span></h3></td>
+                    <td><h3><%= student.batch %></h3></td>
+                </tr>
+                <tr>
+                    <td><h3><span class="circle-box-green">College:</span></h3></td>
+                    <td><h3><%= student.college %></h3></td>
+                </tr>
+                <tr>
+                    <td><h3><span class="circle-box-green">Status:</span></h3></td>
+                    <td><h3><%= student.status %></h3></td>
+                </tr>
+            </table>
+            <hr>
+            <div id="subject-scores">
+                <h4 class="text-underline">SUBJECT SCORES:</h4>
+                <ul>
+                    <% for(c of student.courses) { %>
+                        <li>
+                            <h3><span class="circle-box-green">Subject:</span> <%= c.name %></h3>
+                            <h3><span class="circle-box-green">Score:</span> <%= c.score %></h3>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div id="student-interview-data">
+    <h2 class="text-bold text-underline circle-box-grey">SCHEDULED INTERVIEWS</h2>
+    <ul>
         <% for(i of student.interviews) { %>
-            <li>
+            <li class="card">
                 <h3>COMPANY: <%= i.company.name %></h3>
                 <h3>DATE: <%= i.date %></h3>
             </li>
         <% } %>
-        </ul>
-    </div>
+    </ul>
 </div>

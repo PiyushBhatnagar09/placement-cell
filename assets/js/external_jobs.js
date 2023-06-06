@@ -47,10 +47,10 @@ const displayJobsList = (jobs) => {
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                         <h5 class="card-title">
-                            <p>EMPLOYER NAME: ${jobs[i].employer_name}</p>
-                            <a href="${jobs[i].job_apply_link}">APPLY HERE</a>
-                            <p>JOB CITY: ${jobs[i].job_city}</p>
-                            <p>JOB COUNTRY: ${jobs[i].job_country}</p>
+                            <p><p id="head-job">COMPNAY NAME:</p> <p id=value-job>${jobs[i].employer_name}</p></p>
+                            <p><p id="head-job">JOB CITY:</p>  <p id=value-job>${jobs[i].job_city}</p></p>
+                            <p><p id="head-job">JOB COUNTRY:</p>  <p id=value-job>${jobs[i].job_country}</p></p>
+                            <a class="btn btn-primary" href="${jobs[i].job_apply_link}">APPLY HERE</a>
                         </h5>
                         </div>
                     </div>

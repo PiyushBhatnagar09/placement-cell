@@ -4,6 +4,20 @@ const Interview= require('../models/interview');
 
 module.exports.addInterviewPage= async function(req, res) {
     try {
+        var currentdate = new Date(); 
+
+        var year= currentdate.getFullYear();
+        var month=  parseInt(currentdate.getMonth()+1);
+        if(month<10) {
+            month= "0"+month;
+        }
+        var date= currentdate.getDate();
+        if(date<10) {
+            date= "0"+date;
+        }
+        date= year+'-'+month+'-'+date;
+        console.log(date);
+
         var companies= await Company.find();
         var students= await Student.find();
 
@@ -12,7 +26,8 @@ module.exports.addInterviewPage= async function(req, res) {
             btn_text: 'Sign Out',
             form_action: '/users/sign-out',
             companies: companies,
-            students: students
+            students: students,
+            currentdate: date
         });
     }catch(err) {
 

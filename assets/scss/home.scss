@@ -1,3 +1,5 @@
+// scss for home page 
+
 body,html {
     height: 100%;
 }
@@ -104,18 +106,11 @@ input {
                     text-align: center;
                 }
             }
-            // .interview-date {
-            //     padding: 4px;
-            //     width: 80% !important;
-            //     border-radius: 5px;
-            //     text-align: center;
-            //     background-color: rgba(248, 216, 112, 0.774);
-            // }
         }
-        #input-date-interview {
+        #input-date-interview, #input-job_title-interview {
             text-decoration: none;
         }
-        #input-name-interview:hover {
+        #input-name-interview:hover, #input-result-interview:hover {
             background-color: rgb(252, 203, 143);
         }
     }

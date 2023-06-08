@@ -1,3 +1,5 @@
+//to mail when password changes
+
 const nodeMailer= require('../config/nodemailer');
 const User= require('../models/user');
 

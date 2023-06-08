@@ -1,5 +1,3 @@
-//NOTE: cookie is deleted when browser is closed !!!!!
-
 const User= require('../models/user');
 const RPT= require('../models/reset_password_token');
 const signinMailer= require('../mailers/signin_mailer');
@@ -7,7 +5,7 @@ const resetPassword_mailer= require('../mailers/resetPassword_mailer');
 const password_changed= require('../mailers/password_changed');
 const crypto= require('crypto');
 
-//render the sign up page
+//rendering to the sign up page
 module.exports.signUp= function(req, res) {
     if(req.isAuthenticated()) {
         return res.redirect('/');
@@ -29,40 +27,6 @@ module.exports.signIn= function(req, res) {
         form_action: '/users/sign-up',
         btn_text: 'SignUp' 
     })
-};
-
-//home page
-module.exports.home= function(req, res) {
-    if(req.cookies.user_id) {
-        User.findById(req.cookies.user_id)
-        .then((user) => {
-            if(user) {
-                    Task.find({
-                        user_id: req.cookies.user_id
-                    }) .then( (tasks) => {
-                        return res.render('todo/home', {
-                            title : 'ToDo | Home',
-                            welcome_text: `Welcome ${user.name},`,
-                            user: user,
-                            layout: 'todo/layout',
-                            btn_text: 'Sign Out',
-                            form_action: '/users/signUp',
-                            tasks_list: tasks
-                        })
-                    })
-                    .catch((err) => {
-                            console.log('Error: ', err);
-                    });
-            } else {
-                return res.redirect('/users/signIn');
-            }})
-        .catch((err) => {
-            return res.redirect('/users/signIn');
-        })
-    }
-    else {
-        return res.redirect('/users/signIn');
-    }
 };
 
 //creating new user and checking if he is already present
@@ -140,6 +104,7 @@ module.exports.createSession= async function(req, res) {
     return res.redirect('/');
 };
 
+//destroying the current session when user sign out
 module.exports.destroySession= function(req, res) {
     req.logout(function(err) {
         if(err) {
@@ -150,6 +115,7 @@ module.exports.destroySession= function(req, res) {
     return res.redirect('/');
 }
 
+//random number for otp
 function generateRandomNumber() {
     var minm = 100000;
     var maxm = 999999;
@@ -157,6 +123,7 @@ function generateRandomNumber() {
     .random() * (maxm - minm + 1)) + minm;
 }
 
+//redirect to check password page
 module.exports.getEmail= function(req, res) {
     return res.render('resetPassword/user_forgot_password', {
         layout: 'resetPassword/layout',
@@ -165,6 +132,7 @@ module.exports.getEmail= function(req, res) {
     });
 }
 
+//compares password and confirm_password of user
 module.exports.reset_password= async function(req, res) {
     var otp= generateRandomNumber();
     let user= await User.findOne({
@@ -192,6 +160,7 @@ module.exports.reset_password= async function(req, res) {
     });
 }
 
+//function to verify otp sent to user
 module.exports.verify_otp= async function(req, res) {
     console.log(req.body.num);
     let user= await User.findOne({
@@ -219,6 +188,7 @@ module.exports.verify_otp= async function(req, res) {
     }
 }
 
+//saving new password in database
 module.exports.save_password= async function(req, res) {
     try{
         let user= await User.findOne({

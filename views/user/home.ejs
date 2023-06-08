@@ -90,6 +90,12 @@
                       <p class="card-text"> 
                             <table>
                                 <tr>
+                                    <td>JOB TITLE: </td>
+                                    <td>
+                                        <input id="input-job_title-interview" class="name-link" value="<%= i.job_title %>" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>STUDENT: </td>
                                     <td>
                                         <form action="/students/<%= i.student._id %>" method="GET">
@@ -102,6 +108,28 @@
                                     <td>
                                         <input id="input-date-interview" class="name-link" value="<%= i.date %>" readonly>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>RESULT:</td>
+
+                                    <!-- if result is not "ON HOLD" then show the result otherwise just show ON HOLD  -->
+                                    <% if(i.result.result=="ON HOLD") {%>
+                                    <td>
+                                        <form action="/interviews/<%=i._id%>/add-result" method="POST">
+                                            <select name="result" id="input-result-interview" class="name-link">
+                                                <option value="PASS">PASS</option>
+                                                <option value="FAIL">FAIL</option>
+                                                <option value="ON HOLD" selected>ON HOLD</option>
+                                                <option value="DIDN'T ATTEMPT">DIDN'T ATTEMPT</option>
+                                            </select>
+                                            <input type="submit" value="SUBMIT">
+                                        </form>
+                                    </td>
+                                    <% }else { %>
+                                        <td>
+                                            <input id="input-result-interview" class="name-link" value="<%= i.result.result %>" readonly>
+                                        </td>
+                                    <% } %>
                                 </tr>
                             </table>
                       </p>
@@ -139,7 +167,7 @@
             </div>
             <hr>
             <div>
-                <h4>COMPANIES:</h4>
+                <h4>REGISTERED COMPANIES:</h4>
                 <% for(c of companies) {%>
                     <div class="card bg-white">
                         <div class="card-body">
@@ -160,7 +188,7 @@
     </div>
     <div id="csv-box">
         <p>Download data of all students in CSV format</p>
-        <form action="/students/csv" method="GET">
+        <form action="/students/csv" method="get">
             <input type="submit" value="Download CSV">
         </form>
     </div>

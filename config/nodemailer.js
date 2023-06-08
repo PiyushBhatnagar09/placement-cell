@@ -1,3 +1,5 @@
+//this is used to mail the user when user signin, reset password
+
 const nodemailer= require('nodemailer');
 const ejs= require('ejs');
 const path= require('path');

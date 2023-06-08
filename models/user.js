@@ -1,8 +1,6 @@
 const mongoose= require('mongoose');
 
-//using multer to store files from user
-const path= require('path');
-
+//user schema
 const userSchema= new mongoose.Schema({ //employee
     email: {
         type: String,

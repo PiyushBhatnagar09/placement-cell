@@ -1,3 +1,13 @@
+This is a MERN stack developemnt project
+
+STEPS TO RUN CODE ON YOUR PC:-
+1. Install vscode, nodejs, mongodb
+
+2. copy this whole folder in your pc
+
+
+3. USE THESE NPM COMMANDS TO INSTALL ALL REQUIRED LIBRARIES:-
+
 npm init
 npm install -g express
 npm install -g nodemon

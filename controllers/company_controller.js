@@ -1,14 +1,17 @@
+//using required models
 const Student= require('../models/student');
 const Company= require('../models/company');
 const Interview = require('../models/interview');
 
+//function to add company
 module.exports.addCompany= async function(req, res) {
     try {
         var name= (req.body.company).toUpperCase();
-        console.log(name);
         var company= await Company.findOne({
             name: name
         })
+
+        //checking if company already exists or not
         if(company) {
             req.flash('error', 'Company already exists in database');
             return res.redirect('/');
@@ -27,11 +30,13 @@ module.exports.addCompany= async function(req, res) {
     }
 }
 
+//deleting a company
 module.exports.deleteCompany= async function(req, res) {
     try {
         let company= await Company.findById(req.params.id);
         await Company.findByIdAndDelete(req.params.id);
 
+        //updating all the interviews of students with this company
         var ids=[];
         let students= await Student.find()
         .populate({
@@ -50,6 +55,7 @@ module.exports.deleteCompany= async function(req, res) {
             }
         }
 
+        //deleting all the interviews scheduled with this company
         var Is= await Interview.find({
             company: company
         })

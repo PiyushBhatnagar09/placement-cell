@@ -63,7 +63,7 @@ app.use(session({
     resave: false,
     store: MongoStore.create(
         {
-            mongoUrl: 'mongodb://localhost/codeial_development', //this URL i got by using console.log(mongoose.connection) and then search in the object returned for the url like this
+            mongoUrl: 'mongodb+srv://piyush:piyushbhat@cluster0.uv1du9w.mongodb.net/?retryWrites=true&w=majority', //this URL i got by using console.log(mongoose.connection) and then search in the object returned for the url like this
             autoRemove: 'disabled'
         },
         function(err) {

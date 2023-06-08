@@ -1,9 +1,15 @@
+<!-- user's profile page  -->
+
 <link rel="stylesheet" href="/css/profile.css">
 
 <div id="outer-container">
     <div id="profile-container">
         <div id="profile-image">
-            <img src="<%= student.avatar %>" alt="">
+            <% if(student.avatar) {%>
+                <img src="<%= student.avatar %>" alt="USER-IMAGE">
+            <%}else{%>
+                <img src="https://149448289.v2.pressablecdn.com/wp-content/uploads/user-placeholder.png" alt="USER-IMAGE">
+            <%}%>
             <br>
             <form action="/students/update/<%= student._id %>" enctype="multipart/form-data" method="POST">                
                 <input type="file" name="avatar" placeholder="Profile Picture">
@@ -43,6 +49,8 @@
     </div>
 </div>
 <hr>
+
+<!-- list of interviews of student  -->
 <div id="student-interview-data">
     <h2 class="text-bold text-underline circle-box-grey">SCHEDULED INTERVIEWS</h2>
     <ul>

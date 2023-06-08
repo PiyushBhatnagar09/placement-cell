@@ -5,6 +5,7 @@ const ObjectsToCsv = require('objects-to-csv');
 const Interview = require('../models/interview');
 const path= require('path');
 
+//redirecting user to add new student page
 module.exports.addStudentPage= function(req, res) {
     return res.render('student/newStudentForm', {
         layout: 'student/layout',
@@ -12,8 +13,12 @@ module.exports.addStudentPage= function(req, res) {
         form_action: '/users/sign-out',
     });
 }
+
+//function to add new student
 module.exports.addStudent= async function(req, res) {
     try {
+
+        //getting marks of the new student
         var dsa= await Course.create({
             name: 'DSA',
             score: req.body.dsa_score
@@ -26,9 +31,9 @@ module.exports.addStudent= async function(req, res) {
             name: 'REACT',
             score: req.body.dsa_score
         });
-        console.log('i am don');
+
+
         var name= (req.body.name).toUpperCase();
-        console.log(name);
         let student= await Student.create({
             name: name,
             email: req.body.email,
@@ -49,8 +54,11 @@ module.exports.addStudent= async function(req, res) {
     }
 }
 
+//redirecting user to student's profile page
 module.exports.profile= async function(req, res) {
     try {
+
+        //getting the student data using his id
         var student= await Student.findOne({
             _id: req.params.id
         })
@@ -69,7 +77,7 @@ module.exports.profile= async function(req, res) {
                 }
             }
         })
-        console.log(student);
+
         if(student) {
             return res.render('student/profile', {
                 layout: 'student/layout',
@@ -88,6 +96,7 @@ module.exports.profile= async function(req, res) {
 }
 
 module.exports.downloadCSV= async function(req, res) {
+    console.log('reaced here');
     try {
         console.log('here');
         var students= await Student.find()
@@ -104,9 +113,12 @@ module.exports.downloadCSV= async function(req, res) {
                 populate: {
                     path: 'name'
                 }
+            },
+            populate: {
+                path: 'result'
             }
         })
-        console.log(students);
+        console.log('Prinitng students: ', students);
 
         const data= [];
         for(s of students) {
@@ -136,7 +148,8 @@ module.exports.downloadCSV= async function(req, res) {
                     WEBD_score: webd,
                     REACT_score: react,
                     company: i.company.name,
-                    date: i.date
+                    date: i.date,
+                    result: i.result.result
                 };
                 data.push(st);
             }

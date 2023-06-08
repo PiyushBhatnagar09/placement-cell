@@ -1,9 +1,14 @@
 const mongoose= require('mongoose');
 
+//interview schema
 const interviewSchema= new mongoose.Schema({ //employee
     company: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Company',
+        required: true
+    },
+    job_title: {
+        type: String,
         required: true
     },
     student: {
@@ -14,6 +19,10 @@ const interviewSchema= new mongoose.Schema({ //employee
     date: {
         type: String,
         required: true
+    },
+    result: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Result',
     }
 }, {
     //mongoose will keep record of 'createdAt' and 'updatedAt' by using timestamps

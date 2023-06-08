@@ -86,9 +86,9 @@ input {
         border: 1px solid black; }
         #outer-container #interview-container .card .card-text p {
           text-align: center; }
-    #outer-container #interview-container #input-date-interview {
+    #outer-container #interview-container #input-date-interview, #outer-container #interview-container #input-job_title-interview {
       text-decoration: none; }
-    #outer-container #interview-container #input-name-interview:hover {
+    #outer-container #interview-container #input-name-interview:hover, #outer-container #interview-container #input-result-interview:hover {
       background-color: #fccb8f; }
   #outer-container #extra-links {
     padding: 10px;

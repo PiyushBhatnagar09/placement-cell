@@ -1,4 +1,6 @@
 const mongoose= require('mongoose');
+
+//schema for reset password token
 const resetPasswordTokenSchema= new mongoose.Schema({
     accessToken: {
             type: String,

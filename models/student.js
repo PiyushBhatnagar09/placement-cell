@@ -5,6 +5,7 @@ const multer= require('multer');
 const path= require('path');
 const AVATAR_PATH= path.join('/uploads/students/avatars');
 
+//student schema
 const studentSchema= new mongoose.Schema({
     email: {
         type: String,
@@ -47,6 +48,7 @@ const studentSchema= new mongoose.Schema({
     timestamps: true
 });
 
+//using multer for using disk storage
 let storage= multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, path.join(__dirname, '..', AVATAR_PATH));

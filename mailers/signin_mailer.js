@@ -1,3 +1,5 @@
+//to mail when user signs in
+
 const nodeMailer= require('../config/nodemailer');
 
 exports.newSignin= (user)=> {

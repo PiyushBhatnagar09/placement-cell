@@ -9,7 +9,7 @@ const User= require('../models/user');
 passport.use(new googleStrategy({
         clientID:  "403523148406-rdtj17etq2d5grgumd52lkcco4s82orp.apps.googleusercontent.com",
         clientSecret: "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",
-        callbackURL: "http://localhost:8000/users/auth/google/callback"
+        callbackURL: "https://placement-cell-qil8.onrender.com/users/auth/google/callback"
     },
     function(accessToken, refreshToken, profile, done) {
         //find a user

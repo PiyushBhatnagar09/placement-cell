@@ -20,20 +20,20 @@ const passportGoogle= require('./config/passport-google-oauth2-strategy'); //to 
 const MongoStore= require('connect-mongo');
 
 //to convert scss files to css file
-const sassMiddleware= require('node-sass-middleware');
+// const sassMiddleware= require('node-sass-middleware');
 
 //to display flash messages to user(NOTY is needed to be included at each .ejs page)
 const flash= require('connect-flash');
 const customMware= require('./config/middleware'); //middleware for flash messages
 
 //telling the express app to use sass middleware before the server runs, so that we can convert scss file to css file
-app.use(sassMiddleware({
+/*app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
     debug: true,
     outputStyle: 'extended',
     prefix: '/css'
-}));
+}));*/
 
 //this is compulsary to inlcude
 app.use(express.urlencoded());
@@ -63,7 +63,7 @@ app.use(session({
     resave: false,
     store: MongoStore.create(
         {
-            mongoUrl: 'mongodb+srv://piyush:piyushbhat@cluster0.uv1du9w.mongodb.net/?retryWrites=true&w=majority', //this URL i got by using console.log(mongoose.connection) and then search in the object returned for the url like this
+            mongoUrl: 'mongodb+srv://pbpiyush34:piyushbhat@cluster0.bqvdloa.mongodb.net/?retryWrites=true&w=majority', //this URL i got by using console.log(mongoose.connection) and then search in the object returned for the url like this
             autoRemove: 'disabled'
         },
         function(err) {

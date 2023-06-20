@@ -10,6 +10,6 @@ router.use('/students', require('./students'));
 router.use('/interviews', require('./interviews'));
 router.use('/companies', require('./companies'));
 
-router.get('/', home_controller.home);
+router.get('/', passport.checkAuthentication, home_controller.home);
 
 module.exports= router;

@@ -1,6 +1,9 @@
 This is a MERN stack developemnt project
 https://placement-cell-qil8.onrender.com/
 
+For complete working of the project, see the video :
+https://youtu.be/Xnl9uel1Gro
+
 This is a placement cell which allows only registered employees to add/delete details of students, companies ans interviews. Also, there is a page where we can get all external jobs by searching and can apply for the job also. We can download all the data of student's interview in CSV format.
 
 STEPS TO RUN CODE ON YOUR PC:-

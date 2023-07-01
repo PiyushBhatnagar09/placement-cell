@@ -1,5 +1,5 @@
 {
-  "name": "ABHA_SERVICE",
+  "name": "abha_service",
   "version": "1.0.0",
   "description": "Internship project",
   "main": "index.js",
@@ -31,5 +31,10 @@
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "nnooo"
   }
 }

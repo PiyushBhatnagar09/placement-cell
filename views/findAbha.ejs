@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/aadhaar/generateOtp" method="POST">
+        Aadhaar Number: 
+        <input type="text" name="aadhaar_number">
+        <br>
+        <button type="submit">SUBMIT</button>
+    </form>
+    <hr>
+    <p>Get Health ID after verifying Aadhaar number</p>
+    <form action="/aadhaar/generateHealthId" method="POST">
+        <button type="submit">GET HEALTH ID</button>
+    </form>
+</body>
+</html>

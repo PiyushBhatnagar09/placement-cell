@@ -1,7 +1,7 @@
 {
-  "name": "placement_cell",
+  "name": "ABHA_SERVICE",
   "version": "1.0.0",
-  "description": "This is my first backend project which helps employess to store students info in database and retreive it in csv format",
+  "description": "Internship project",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

@@ -7,6 +7,10 @@ const app= express();
 
 const port= 8000;
 
+//frontend to backend connection
+var cors= require('cors');
+app.use(cors());
+
 const db= require('./config/mongoose'); //connecting to mongoose to get access to database
 
 //used for create session cookie which is used by passport.js to setup the identity of user
@@ -29,6 +33,8 @@ app.use(express.static('./assets'));
 //setup view engine, for all ejs files use views folder
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+app.use(express.json());
 
 //mongo store is used to store the session cookie in the db
 const mongoose= require('mongoose');

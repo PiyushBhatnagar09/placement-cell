@@ -17,4 +17,18 @@ Data:  {
   ]
 }
 
-DOUBT: check if txnId is unique for particular aadhaar number or not
+1: check if txnId is unique for particular aadhaar number or not?
+Yes, transaction id is changing for every new request of the same user
+
+2: data should not be displayed in url of browser
+
+3: healthId/healthNumber is unique?
+healthid i.e. abha number is unique but a person can have multiple abha addresses i.e. health id number but it should be unique in the sense, no other person has taken that address with same name
+
+4: do we pass healthid from our frontend?
+
+
+
+
+npm install crypto
+npm install axios

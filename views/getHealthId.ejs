@@ -6,12 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/aadhaar/createHealthIdWithPreVerified" method="POST">
-        Aadhaar Number:
-        <input type="text" name="aadhaar_number">
-        <br>
-        Email: 
-        <input type="email" name="email">
+    <form action="/aadhaar/createHealthIdWithPreVerified/?txn_id=<%= txn_id %>&token=<%= token %>" method="POST">
+        <!-- Health Id:
+        <input type="text" name="health_id">
+        <br> -->
+        Verify Email:
+        <!-- <input type="text" name="email">
         <br>
         First Name: 
         <input type="text" name="first_name">
@@ -19,8 +19,8 @@
         Last Name: 
         <input type="text" name="last_name">
         <br>
-        Password: 
-        <input type="password" name="password">
+        Password:
+        <input type="password" name="password"> -->
         <hr>
         <button type="submit">SUBMIT</button>
     </form>

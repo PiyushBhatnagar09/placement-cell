@@ -6,15 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/aadhaar/verifyOTP/?txn_id=<%= txn_id %>&token=<%= token %>" method="POST">
+    <form action="/login/aadhaar/verifyAadhaarOTP/?txn_id=<%= txn_id %>&token=<%= token %>" method="POST">
         Enter Otp:
         <input type="text" name="otp">
         <hr>
         <button type="submit">SUBMIT</button>
-    </form>
-    <hr>
-    <form action="/aadhaar/resendAadhaarOtp/?txn_id=<%= txn_id %>&token=<%= token %>" method="POST">
-        <button type="submit">resend otp?</button>
     </form>
 </body>
 </html>

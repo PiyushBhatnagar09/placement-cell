@@ -1,0 +1,93 @@
+// scss for profile page 
+
+.text-underline {
+    text-decoration: underline;
+}
+#outer-container {
+    color: black;
+    height: 100%;
+    width: 100%;
+    div {
+        display: block;
+    }
+    #profile-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-width: 100%;
+        justify-content: space-around;
+    
+        #profile-image {
+            width: 40%;
+            height: 50%;
+            margin-top: 5%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            img {
+                width: 80%;
+                height: 100%;
+                border-radius: 10%;
+            }
+        }
+        #student-data {
+            border-left: 2px solid white;
+            display: inline-block;
+            padding-left: 25px;
+            h2 {
+                padding: 10px;
+                background-color: aliceblue;
+                border-radius: 15px;
+                color: brown;
+                font-style: italic;
+            }
+        }
+        background-color: rgba(247, 243, 239, 0.603);
+        
+        h2 {
+            span {
+                padding: 2px;
+            }
+        }
+        table {
+            overflow: hidden;
+            border-radius: 15px;
+            background-color: aliceblue;
+            td {
+                padding: 5px;
+            }
+        }
+        #subject-scores {
+            h4 {
+                text-align: center;
+            }
+            padding: 5px;
+            background-color: aliceblue;
+            border-radius: 15px;
+        }
+    }
+}
+#student-interview-data {
+    color: black;
+    ul {
+        padding: 0px;
+    }
+    .card {
+        padding: 10px;
+    }
+}
+
+.circle-box-green {
+    background-color: rgba(214, 250, 214, 0.418);
+    padding: 2px;
+    border-radius: 10px;
+}
+.circle-box-grey {
+    background-color: rgba(131, 133, 131, 0.712);
+    padding: 6px;
+    border-radius: 10px;
+}
+.text-bold {
+    font-weight: 700;
+}

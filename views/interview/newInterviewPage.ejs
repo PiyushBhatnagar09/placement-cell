@@ -1,0 +1,38 @@
+<!-- page for setting new interview for student  -->
+
+<div id="outer-container">
+    <div id="login-box">
+        <h2 class="text-center">ADD INTERVIEW</h2>
+
+        <!-- form to add new interview details -->
+        <form action="/interviews/add-interview" method="POST">
+            <p>Select Company Name :</p>
+            <select name="company_id" id="company_id" required>
+                <% for(c of companies) { %>
+                    <option value="<%= c._id %>"><%= c.name %></option>
+                <% } %>
+            </select>
+            <br><br>
+
+            <!-- job title  -->
+            <p>Enter Job Title :</p>
+            <input type="text" name="job_title" required>
+            <br><br>
+
+            <!-- student  -->
+            <p>Select Student Name :</p>
+            <select name="student_id" id="student_id" required>
+                <% for(s of students) { %>
+                    <option value="<%= s._id %>"><%= s.name %></option>
+                <% } %>
+            </select>
+            <br><br>
+
+            <!-- date of interview  -->
+            <p>Select Date of Interview :</p>
+            <input type="date" name="date" id="date" min="2023-06-07" required>
+            <hr>
+            <button type="submit"><b>ADD INTERVIEW</b></button>
+        </form>
+    </div>
+</div>

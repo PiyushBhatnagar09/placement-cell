@@ -113,7 +113,10 @@ module.exports.downloadCSV= async function(req, res) {
                 populate: {
                     path: 'name'
                 }
-            },
+            }
+        })
+        .populate({
+            path: 'interviews',
             populate: {
                 path: 'result'
             }

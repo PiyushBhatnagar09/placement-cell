@@ -3,6 +3,8 @@
 ## Overview
 The Placement Cell Website is a web application designed to streamline and manage placement-related activities within an educational institution. It provides functionalities for teachers to manage student and company data, schedule interviews, and track placement outcomes efficiently. The platform also integrates job opportunities using an external Job API.
 
+![placement_cell](https://github.com/user-attachments/assets/2f499443-fe4a-40dd-a033-e7eb24fb63fe)
+
 ## Features
 
 ### Authentication

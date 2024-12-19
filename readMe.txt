@@ -1,53 +1,108 @@
-This is a MERN stack developemnt project
+# Placement Cell Website
 
-STEPS TO RUN CODE ON YOUR PC:-
-1. Install vscode, nodejs, mongodb
+## Overview
+The Placement Cell Website is a web application designed to streamline and manage placement-related activities within an educational institution. It provides functionalities for teachers to manage student and company data, schedule interviews, and track placement outcomes efficiently. The platform also integrates job opportunities using an external Job API.
 
-2. copy this whole folder in your pc
+## Features
+
+### Authentication
+- **Login System**: Teachers can log in using a username and password.
+- **Google Authentication**: An alternative secure login method using Google.
 
 
-3. USE THESE NPM COMMANDS TO INSTALL ALL REQUIRED LIBRARIES:-
 
-npm init
-npm install -g express
-npm install -g nodemon
+### Student and Company Management
+- Add and manage student details.
+- Add and manage company details.
 
-Paste this in package.json to use 'npm start'
-"scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-},
+### Interview Scheduling
+- Schedule interviews between students and companies.
+- Specify the date, role, and initial verdict.
+- Update the verdict after the interview.
 
-npm install ejs
-npm install express-ejs-layouts
-npm install mongoose
-npm install cookie-parser
-npm install passport
-npm install passport-local
-npm install express-session
-npm install connect-mongo
-npm install node-sass
-npm install node-sass-middleware
-npm install connect-flash
+### Data Export
+- Export all student data, including placement information, in CSV format for record-keeping and reporting.
 
-put the NOTY stylesheet, script and code link in both layout.ejs files
+### External Job Opportunities
+- View external job opportunities through integration with a Job API.
 
-npm install nodemailer
+## Tech Stack
+- **Backend**: [e.g., Node.js, Django, Flask] *(Specify the framework used)*
+- **Frontend**: [e.g., React, Angular, HTML/CSS/JavaScript] *(Specify the framework/library used)*
+- **Database**: [e.g., MySQL, MongoDB] *(Specify the database used)*
+- **Authentication**: OAuth 2.0 for Google Authentication
 
-npm install crypto //to generate random number of 6digits for OTP in reset password
+## Setup and Installation
 
-NOTE: when we are sending params in the form action then the method must be POST because otherwise in GET, you can't access req.body !!
+### Prerequisites
+- [e.g., Python 3.x, Node.js, etc.] *(Specify based on your project)*
+- Database setup ([e.g., MySQL/MongoDB])
 
-npm install passport-google-oath
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd <project-directory>
+   ```
+3. Install dependencies:
+   ```bash
+   npm install  # or pip install -r requirements.txt
+   ```
+4. Configure environment variables:
+   - Add the database credentials and Job API key in the `.env` file.
+   ```env
+   DATABASE_URL=<database_url>
+   JOB_API_KEY=<job_api_key>
+   GOOGLE_CLIENT_ID=<google_client_id>
+   GOOGLE_CLIENT_SECRET=<google_client_secret>
+   ```
+5. Run the application:
+   ```bash
+   npm start  # or python manage.py runserver
+   ```
 
-NOTE: when existing module cannot be installed in npm,
-then just replace node_modules folders with the codeial's 
+### Deployment
+- *(Add instructions if deploying on platforms like Heroku, AWS, etc.)*
 
-npm install passport-google-oauth
-npm install objects-to-csv
+## Usage
 
-To use fetch in fetching api data:-
-npm install node-fetch@2, Then do:-
-const fetch= require('node-fetch')
+1. **Login**: Teachers login using either their credentials or Google.
+2. **Add Details**:
+   - Navigate to the **Students** page to add or update student details.
+   - Navigate to the **Companies** page to manage company information.
+3. **Schedule Interviews**:
+   - Go to the **Interviews** page and schedule interviews by selecting students and companies, specifying the date, role, and initial verdict.
+4. **Update Verdicts**:
+   - Edit previously scheduled interviews to update the verdict.
+5. **Export Data**:
+   - Export student placement data in CSV format from the **Export Data** page.
+6. **View Job Opportunities**:
+   - Access the **Job Opportunities** page to view external job listings powered by the Job API.
 
-npm install multer
+## API Integration
+- **Job API**: Fetch external job opportunities using an integrated third-party Job API.
+- Ensure the API key is configured in the `.env` file.
+
+## Contribution
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Submit a pull request.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
+---

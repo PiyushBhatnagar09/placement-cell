@@ -9,34 +9,42 @@ The Placement Cell Website is a web application designed to streamline and manag
 - **Login System**: Teachers can log in using a username and password.
 - **Google Authentication**: An alternative secure login method using Google.
 
-
+![signin page](https://github.com/user-attachments/assets/8ed9a951-d15f-43a2-a106-b5cb7e638f95)
 
 ### Student and Company Management
 - Add and manage student details.
 - Add and manage company details.
+![placement_cell](https://github.com/user-attachments/assets/ff272a5d-5f24-4eda-b7b7-27cab41e415a)
+
+### Student Profile
+
+![student](https://github.com/user-attachments/assets/91b67bec-1274-4891-8cb6-70d853c96f4c)
 
 ### Interview Scheduling
 - Schedule interviews between students and companies.
 - Specify the date, role, and initial verdict.
 - Update the verdict after the interview.
 
+![interview](https://github.com/user-attachments/assets/5eeb3146-04d0-4842-955c-e0384c83f220)
+
 ### Data Export
 - Export all student data, including placement information, in CSV format for record-keeping and reporting.
+
+![csv](https://github.com/user-attachments/assets/d1f56539-a610-4ea8-ac09-e4c30e2ad22d)
+![csv_data](https://github.com/user-attachments/assets/5e0ea434-1a56-4ce4-a221-7d434b88db3b)
 
 ### External Job Opportunities
 - View external job opportunities through integration with a Job API.
 
+![ext_jobs](https://github.com/user-attachments/assets/08a3f86d-3bbe-48cd-91f8-b8493f34cc91)
+
 ## Tech Stack
-- **Backend**: [e.g., Node.js, Django, Flask] *(Specify the framework used)*
-- **Frontend**: [e.g., React, Angular, HTML/CSS/JavaScript] *(Specify the framework/library used)*
-- **Database**: [e.g., MySQL, MongoDB] *(Specify the database used)*
+- **Backend**: Node.js, MongoDB, Express.js
+- **Frontend**: HTML, CSS, JavaScript
+- **Database**: MongoDB
 - **Authentication**: OAuth 2.0 for Google Authentication
 
 ## Setup and Installation
-
-### Prerequisites
-- [e.g., Python 3.x, Node.js, etc.] *(Specify based on your project)*
-- Database setup ([e.g., MySQL/MongoDB])
 
 ### Steps
 1. Clone the repository:
@@ -63,9 +71,6 @@ The Placement Cell Website is a web application designed to streamline and manag
    ```bash
    npm start  # or python manage.py runserver
    ```
-
-### Deployment
-- *(Add instructions if deploying on platforms like Heroku, AWS, etc.)*
 
 ## Usage
 
